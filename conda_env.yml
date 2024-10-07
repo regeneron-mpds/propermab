@@ -1,0 +1,24 @@
+name: propermab
+channels:
+  - bioconda
+  - conda-forge
+  - pytorch
+  - defaults
+dependencies:
+  - openmm
+  - libstdcxx-ng
+  - pdbfixer
+  - anarci
+  - scipy>=1.6
+  - biopython>=1.76, <=1.79
+  - py3dmol
+  - python>=3.7, <3.9
+  - matplotlib>=3.5
+  - seaborn>=0.11
+  - numba>=0.50
+  - pdb2pqr
+  - pip
+  - pip:
+    - immunebuilder>=0.0.5,<=0.0.8
+    - freesasa==2.1.0
+    - open3d

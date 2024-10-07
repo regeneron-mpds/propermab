@@ -1,0 +1,10 @@
+{
+    "hmmer_binary_path" : "",
+    "nanoshaper_binary_path" : "/ABPS_PATH/APBS-3.0.0.Linux/bin/NanoShaper",
+    "apbs_binary_path" : "/ABPS_PATH/APBS-3.0.0.Linux/bin/apbs",
+    "pdb2pqr_path" : "pdb2pqr",
+    "multivalue_binary_path" : "/ABPS_PATH/APBS-3.0.0.Linux/share/apbs/tools/bin/multivalue",
+    "immunebuilder_weights_dir" : "",
+    "atom_radii_file" : "/Users/bian.li/projects/propermab/amber.siz",
+    "apbs_ld_library_paths" : ["LIB_PATH", "/ABPS_PATH/APBS-3.0.0.Linux/lib/"]
+}
