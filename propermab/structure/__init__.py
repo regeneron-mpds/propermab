@@ -61,6 +61,5 @@ from .io import *
 from .sasa import *
 from .md import *
 from .scm import *
-from .construction import *
 from .pipelines import *
 from .struct_predictor import StructPredictor

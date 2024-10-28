@@ -43,8 +43,7 @@ You can find the value of `hmmer_binary_path` by issuing the following command o
 dirname $(which hmmscan)
 ```
 
-The value of `atom_radii_file` should point to a file named `amber.siz`. This file is part of the 
-dependencies to run NanoShaper and can be obtained from NanoShaper repository (https://gitlab.iit.it/SDecherchi/nanoshaper).
+The value of `atom_radii_file` should point to a file named `amber.siz`. This file is needed to run NanoShaper and can be obtained from the pdb2xyzr.zip file available at (https://electrostaticszone.eu/downloads/scripts-and-utilities.html).
 
 To get the value for LIB_PATH, first create a separate conda environment to install the `readline 7.0` package.
 ```bash
@@ -69,7 +68,7 @@ from propermab.features import feature_utils
 
 defaults.system_config.update_from_json('./default_config.json')
 
-mol_feature = feature_utils.calculate_features_from_pdb('./examples/apbs/mAb1.pdb')
+mol_feature = feature_utils.calculate_features_from_pdb('./tests/pembrolizumab_ib.pdb')
 ```
 Or you can provide a pair of heavy and light chain sequences, `propermab` then calls the `ABodyBuilder2` model to predict the structure, which will be used as the input for feature calculation.
 ```python
@@ -83,6 +82,20 @@ light_seq = 'LIGHT_SEQ'
 mol_features = feature_utils.get_all_mol_features(heavy_seq, light_seq, num_runs=1)
 ```
 Be sure to replace HEAVY_SEQ and LIGHT_SEQ with the actual sequences. Different runs of `ABodyBuilder2` can result in some difference in sidechain conformations due to the relaxation step in `ABodyBuilder2`. This in turn can affect values of some of the molecular features `propermab` calculates. If the average feature value across multiple runs is desired, one can increase `num_runs`. `get_all_mol_features()` returns a Python dictionary in which the keys are feature names and the values are the corresponding lists of feature values from multiple runs.
+
+The following code demonstrates how to calculate the set of sequence-based features, assuming that the sequences are for the Fv domains, the isotype is IgG1, and the type of the light chain is lambda.
+```python
+from propermab import defaults
+from propermab.features import feature_utils
+
+defaults.system_config.update_from_json('./default_config.json')
+
+heavy_seq = 'HEAVY_SEQ'
+light_seq = 'LIGHT_SEQ'
+seq_features = feature_utils.get_all_seq_features(
+    heavy_seq, light_seq, is_fv=True, isotype='igg1', lc_type='lambda'
+)
+```
 
 ## Third-party software
 `propermab` requires separate installation of third party software which may carry their own license requirements, and should be reviewed by the user prior to installation and use
