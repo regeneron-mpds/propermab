@@ -1,6 +1,8 @@
 # propermab
 
-`propermab` is a Python package for calculating and predicting molecular features and properties of monoclonal antibodies (mAbs).
+`propermab` is a Python package for calculating and predicting molecular features and properties of monoclonal antibodies (mAbs), as described in the following paper:
+
+Li, B., Luo, S., Wang, W., Xu, J., Liu, D., Shameem, M., Mattila, J., Franklin, M.C., Hawkins, P.G., and Atwal, G.S. (2025). PROPERMAB: an integrative framework for in silico prediction of antibody developability using machine learning. mAbs 17, 2474521. 10.1080/19420862.2025.2474521.
 
 
 ## Installation (Linux)
@@ -48,7 +50,8 @@ The value of `atom_radii_file` should point to a file named `amber.siz`. This fi
 To get the value for LIB_PATH, first create a separate conda environment to install the `readline 7.0` package.
 ```bash
 conda deactivate
-conda env create --name readline python=3.8
+conda create --name readline python=3.8
+conda activate readline
 conda install readline=7.0
 ```
 This may sound a bit involved, but it is necessary as the APBS tool specifically requires the readline.so.7 library file. `readline 7.0` can't be installed from within the propermab conda environment because that would result in too many conflicts. With that being said, once the readline package is installed, the value for LIB_PATH can be found by
